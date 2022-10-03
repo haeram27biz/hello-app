@@ -1,0 +1,23 @@
+#### envionments
+## $ travis encrypt MY_SECRET_ENV=super_secret
+env:
+  global:
+  - PUSH_IMAGE_REPO=haeram27biz/hello-app
+  - PUSH_IMAGE_TAG=0.0.2
+
+language: minimal
+services: docker
+
+#### job phases  https://docs.travis-ci.com/user/job-lifecycle/
+#before_install:
+script:
+  - docker build -t $PUSH_IMAGE_REPO:$PUSH_IMAGE_TAG .
+
+deploy:
+  provider: script
+  script: chmod +x ./deploy.sh && ./deploy.sh
+  skip_cleanup: true
+  on:
+    branch: main
+    repo: $PUSH_IMAGE_REPO
+    #tags: true
