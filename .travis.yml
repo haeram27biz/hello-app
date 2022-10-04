@@ -3,7 +3,7 @@
 env:
   global:
   - PUSH_IMAGE_REPO=haeram27biz/hello-app
-  - PUSH_IMAGE_TAG=0.0.2
+  - PUSH_IMAGE_TAG=0.0.1
 
 language: minimal
 services: docker
